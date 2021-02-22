@@ -13,11 +13,13 @@ public class ServerController {
     }
     
     public void init(int port) throws IOException{
+        DB = new Database();
         server = new Server(port);
         
         server.Init();
     }
     
+    public void 
     
     
     

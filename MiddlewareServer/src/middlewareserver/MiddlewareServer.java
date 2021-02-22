@@ -11,6 +11,7 @@ public class MiddlewareServer {
         
         try {
             server.init(8080);
+            System.out.println("Server is running");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

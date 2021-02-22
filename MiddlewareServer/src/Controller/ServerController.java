@@ -26,7 +26,10 @@ public class ServerController implements Observer {
     public void ManageRequest(String IDClient, String request){
         String response = requestManager.processRequest(request);
         
-        server.sendToClients(response, IDClient);
+        if(response.length() != 0){
+            server.sendToClients(response, IDClient);
+        }
+        
     }
     
     public void observeClient(ClientConnection client){

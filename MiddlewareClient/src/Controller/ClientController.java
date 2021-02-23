@@ -15,7 +15,7 @@ public class ClientController implements Observer {
     public ClientController() {
         requestManager = new RequestManager();
     }
-
+    
     public void init(String host, int port) throws IOException {
         client = new Client(host, port);
         client.addObserver(this);

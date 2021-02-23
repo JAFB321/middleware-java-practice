@@ -24,12 +24,14 @@ public class ServerController implements Observer {
     }
     
     public void ManageRequest(String IDClient, String request){
-        String response = requestManager.processRequest(request);
+        String xml = requestManager.processRequest(request);
         
-        if(response.length() != 0){
-            server.sendToClients(response, IDClient);
-        }
-        
+        server.sendToClients("<res>Ok</res>", IDClient);
+        System.out.println("responsed");
+    }
+    
+    public void send(String content){
+        server.sendToClients(content);
     }
     
     public void observeClient(ClientConnection client){

@@ -50,6 +50,7 @@ public class ClientConnection extends CustomObservable implements Runnable {
 
     public boolean sendString(String json) {
         try {
+            
             out.writeUTF(json);
             return true;
         } catch (Exception e) {

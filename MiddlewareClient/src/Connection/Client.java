@@ -48,6 +48,7 @@ public class Client extends CustomObservable implements Runnable {
             try {
                 String obj = in.readUTF();
                 ObjectRecived(obj);
+                System.out.println("UTF Recieved ");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -61,7 +62,7 @@ public class Client extends CustomObservable implements Runnable {
     public boolean SendString(String json) {
         try {
             out.writeUTF(json);
-            out.flush(); // send the message
+            out.flush();// send the message
 
             return true;
         } catch (Exception e) {

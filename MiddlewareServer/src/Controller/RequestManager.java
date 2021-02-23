@@ -16,8 +16,8 @@ public class RequestManager {
     
     public String processRequest(String requestContent){
         String xmlRequest = XML.interpret(requestContent);
-        
-        return "";
+        System.out.println(requestContent);
+        return xmlRequest;
     }
     
 }

@@ -64,14 +64,14 @@ public class Server extends CustomObservable implements Runnable {
 
     public void sendToClients(String json) {
         for (ClientConnection cliente : getClientes()) {
-            cliente.sendObject(json);
+            cliente.sendString(json);
         }
     }
 
     public void sendToClients(String json, String ID) {
         for (ClientConnection cliente : getClientes()) {
             if (cliente.ID.equals(ID)) {
-                cliente.sendObject(json);
+                cliente.sendString(json);
             }
         }
     }
@@ -87,7 +87,7 @@ public class Server extends CustomObservable implements Runnable {
             }
 
             if (hasID) {
-                cliente.sendObject(json);
+                cliente.sendString(json);
             }
         }
     }

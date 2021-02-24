@@ -4,6 +4,7 @@ import Data.dto.Alumno;
 import Interpreter.Expression;
 import Interpreter.JsonExpression;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RequestManager {
     
@@ -11,14 +12,22 @@ public class RequestManager {
     private JSONTools jsonTools = new JSONTools();
             
             
-    public String processRequest(String requestContent){
-        return JSON.interpret(requestContent);
+    public Request processRequest(String requestContent){
+        String requestJSON = JSON.interpret(requestContent);
+        Request req = (Request)jsonTools.JSONToObject(requestJSON, Request.class);
+        
+        return req;
     }
     
     public String prepareRequest(Object content, RequestSchema schema, RequestType type){
         String requestJSON = jsonTools.objectToJSON(new Request(type, schema, RequestOrigin.CLIENT, content));
        
         return requestJSON;
+    }
+    
+    public String getNewRequestID(){
+        Random rd = new Random();
+        return "REQUEST_"+rd.nextInt();
     }
     
     public static void main(String[] args) {

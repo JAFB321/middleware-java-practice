@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/pendingRequest.java</file>
+            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/requestManager/RequestManager.java</file>
+            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/requestManager/JSONTools.java</file>
             <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/middlewareclient/MiddlewareClient.java</file>
-            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Connection/Client.java</file>
+            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/data/AlumnosData.java</file>
+            <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/data/AlumnosJSON.java</file>
             <file>file:/D:/Users/Jafb3/Desktop/ITSON/middleware/middleware-java-practice/MiddlewareClient/src/Controller/ClientController.java</file>
         </group>
     </open-files>

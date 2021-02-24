@@ -3,6 +3,7 @@ package Controller;
 import Controller.requestManager.pendingRequest;
 import Controller.requestManager.RequestManager;
 import Connection.Client;
+import Controller.requestManager.Request;
 import Controller.requestManager.RequestSchema;
 import Controller.requestManager.RequestType;
 import java.io.IOException;
@@ -40,20 +41,23 @@ public class ClientController implements Observer {
     }
 
     public Object sendRequestToServer(RequestSchema schema, RequestType type, Object content){
-        pendingRequest req = new pendingRequest("1", type, schema);
-        pendingRequests.add(req);
+        pendingRequest pendingReq = new pendingRequest(requestManager.getNewRequestID(), type, schema);
+        pendingRequests.add(pendingReq);
         
-        client.SendString("{\"type\": \"Alumnos_LIST\"}");
+        String req = requestManager.prepareRequest(content, schema, type);
         
-        return req.waitResponse();
+        client.SendString(req);
+        
+        return pendingReq.waitResponse();
     }
             
     private void ManageRequest(String request) {
-        String json = requestManager.processRequest(request);
+        Request req = requestManager.processRequest(request);
             
         for (pendingRequest pending : pendingRequests) {
-            if(!pending.isSolved()){
-                pending.solve(json);
+            if(!pending.isSolved() && pending.Type == req.type && pending.Schema == req.schema){
+                pending.solve(req.content);
+                break;
             }
         }
     }

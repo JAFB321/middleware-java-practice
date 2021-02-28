@@ -10,9 +10,4 @@ public class AlumnosJSON {
     public Alumno JSONToAlumno(String content) {
         return (Alumno) jsonTools.JSONToObject(content, Alumno.class);
     }
-
-    public Alumno[] JSONToAlumnoArray(String content) {
-        return (Alumno[]) jsonTools.JSONToObject(content, Alumno[].class);
-    }
-
 }

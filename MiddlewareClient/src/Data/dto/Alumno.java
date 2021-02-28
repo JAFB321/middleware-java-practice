@@ -4,43 +4,42 @@ public class Alumno {
     
     private int id;
     private String nombre;
-    private byte edad;
+    private int[] calificaciones;
 
-    public Alumno(int id, String nombre, byte edad) {
+    public Alumno() {
+    }
+
+    public Alumno(int id, String nombre, int[] calificaciones) {
         this.id = id;
         this.nombre = nombre;
-        this.edad = edad;
-    }
-    
-    
-    
-    public Alumno() {
-        
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
+        this.calificaciones = calificaciones;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public byte getEdad() {
-        return edad;
+    public int[] getCalificaciones() {
+        return calificaciones;
     }
 
-    public void setEdad(byte edad) {
-        this.edad = edad;
+    public int getId() {
+        return id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setCalificaciones(int[] calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+    
     
 }

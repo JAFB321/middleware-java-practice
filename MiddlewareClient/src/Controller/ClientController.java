@@ -4,8 +4,6 @@ import Controller.requestManager.pendingRequest;
 import Controller.requestManager.RequestManager;
 import Connection.Client;
 import Controller.requestManager.Request;
-import Controller.requestManager.RequestSchema;
-import Controller.requestManager.RequestType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -40,11 +38,11 @@ public class ClientController implements Observer {
         client.Init();
     }
 
-    public Object sendRequestToServer(RequestSchema schema, RequestType type, Object content){
-        pendingRequest pendingReq = new pendingRequest(requestManager.getNewRequestID(), type, schema);
+    public Object sendRequestToServer(Object content){
+        pendingRequest pendingReq = new pendingRequest(requestManager.getNewRequestID());
         pendingRequests.add(pendingReq);
         
-        String req = requestManager.prepareRequest(content, schema, type);
+        String req = requestManager.prepareRequest(content);
         
         client.SendString(req);
         
@@ -53,9 +51,9 @@ public class ClientController implements Observer {
             
     private void ManageRequest(String request) {
         Request req = requestManager.processRequest(request);
-            
+                
         for (pendingRequest pending : pendingRequests) {
-            if(!pending.isSolved() && pending.Type == req.type && pending.Schema == req.schema){
+            if(pending.ID == req.ID && !pending.isSolved()){
                 pending.solve(req.content);
                 break;
             }

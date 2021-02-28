@@ -1,5 +1,6 @@
 package Controller.requestManager;
 
+import Data.dto.Alumno;
 import Interpreter.Expression;
 import Interpreter.JsonExpression;
 import java.util.Random;
@@ -29,29 +30,13 @@ public class RequestManager {
     }
     
     public static void main(String[] args) {
-//        Alumno a = new Alumno();
-//        a.setEdad((byte)21);
-//        a.setId(10);
-//        a.setNombre("Jose");
-//        String requestJSON = new JSONTools().objectToJSON(new Request(RequestType.INS, RequestSchema.Alumnos, RequestOrigin.CLIENT, a));
-//        
-//        Request req = (Request)new JSONTools().JSONToObject(requestJSON, Request.class);
-//        
-//        
-//        System.out.println();
-//        System.out.println(requestJSON);
-//        
-//        System.out.println("");
-//        System.out.println(req.content);
-//        
-//        Object obj = new JSONTools().JSONToObject(req.content.toString(), Alumno.class);
-//        
-//        Alumno alm = (Alumno)obj;
-//        
-//        System.out.println(alm.getNombre());
-//        System.out.println(alm.getId());
-//        System.out.println(alm.getEdad());
-//        
-//        System.out.println(req.schema);
+        JSONTools jsonTools = new JSONTools();
+        
+        Alumno alm = new Alumno(1, "Jose", new int[]{1,2,3});
+        Request req = new Request("REQUEST_ID", alm);
+        
+        String jsonaml = jsonTools.objectToJSON(req);
+        
+        System.out.println(jsonaml);
     }
 }

@@ -2,6 +2,8 @@ package Controller;
 
 import Connection.ClientConnection;
 import Connection.Server;
+import Controller.requestManager.Request;
+import Controller.requestManager.RequestManager;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
@@ -24,15 +26,19 @@ public class ServerController implements Observer {
     }
     
     public void ManageRequest(String IDClient, String request){
-        String xml = requestManager.processRequest(request);
+        Request responseRequest = requestManager.processRequest(request);
+        String response = requestManager.prepareRequest(responseRequest.Content, responseRequest.ID);
         
-        server.sendToClients("<res>Ok</res>", IDClient);
+        System.out.println(response);
+        
+        //server.sendToClients(response, IDClient);
         System.out.println("responsed");
     }
     
     public void send(String content){
         server.sendToClients(content);
     }
+    
     
     public void observeClient(ClientConnection client){
         client.addObserver(this);
@@ -47,5 +53,21 @@ public class ServerController implements Observer {
             ClientConnection client = (ClientConnection)obs;
             ManageRequest(client.ID, (String)obj);
         }
+    }
+    
+    public static void main(String[] args) {
+        ServerController con = new ServerController();
+        con.ManageRequest("CLIENT1", "{\n" +
+"  \"ID\": \"Alumno_GET\",\n" +
+"  \"Content\": {\n" +
+"    \"id\": 1,\n" +
+"    \"nombre\": \"Jose\",\n" +
+"    \"calificaciones\": [\n" +
+"      1,\n" +
+"      2,\n" +
+"      3\n" +
+"    ]\n" +
+"  }\n" +
+"}");
     }
 }

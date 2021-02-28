@@ -54,7 +54,7 @@ public class ClientController implements Observer {
                 
         for (pendingRequest pending : pendingRequests) {
             if(pending.ID == req.ID && !pending.isSolved()){
-                pending.solve(req.content);
+                pending.solve(req.Content);
                 break;
             }
         }

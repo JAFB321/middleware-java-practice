@@ -1,5 +1,6 @@
 package Interpreter;
 
+import org.json.JSONException;
 import org.json.XML;
 import org.json.JSONObject;
 
@@ -10,10 +11,13 @@ public class Tools {
         return json.toString();
     }
 
-    public static String JSONtoXML(String jsonString) {
+    public static String JSONtoXML(String jsonString, String rootName) {
         JSONObject json = new JSONObject(jsonString);
+        
         return XML.toString(json);
     }
+    
+
 
     public static boolean isXML(String context) {
         if (context.length() != 0 && context.trim().charAt(0) == '<') {
@@ -28,5 +32,7 @@ public class Tools {
         }
         return false;
     }
+    
+    
 
 }

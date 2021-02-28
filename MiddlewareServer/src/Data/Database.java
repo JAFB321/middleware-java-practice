@@ -1,55 +1,31 @@
 
 package Data;
 
-import Data.dto.strAlumno;
+import Data.dto.Alumno;
 import java.util.ArrayList;
 
 
 public class Database {
-    public ArrayList<strAlumno> DATA;
+    public ArrayList<Alumno> DATA;
     
     public Database(){
-        DATA = new ArrayList<strAlumno>();
-        DATA.add(new strAlumno(1, "Jose Antonio Felix Ballesteros", 9, 20));
-        DATA.add(new strAlumno(2, "Jose Pablo Coronado Ramon", 10, 22));
-        DATA.add(new strAlumno(3, "Bruno Ernesto Gil Morales", 9, 21));
-        DATA.add(new strAlumno(4, "Alberto Felix Rosas", 9, 22));        
+        DATA = new ArrayList<Alumno>();
+        DATA.add(new Alumno(1, "Jose Antonio Felix Ballesteros", new int[]{9,8,7,8}));
+        DATA.add(new Alumno(2, "Jose Pablo Coronado Ramon", new int[]{9,10,5,8}));
+        DATA.add(new Alumno(3, "Bruno Ernesto Gil Morales", new int[]{10,8,9,10}));
+        DATA.add(new Alumno(4, "Alberto Felix Rosas", new int[]{9,9,7,10}));        
     }
     
-    public strAlumno[] getList(String Filter){
-        ArrayList<strAlumno> list = new ArrayList<>();
+    public Alumno getAlumnos(int ID){
         
-        for (strAlumno a : DATA) {
-            if(a.Nombre.toLowerCase().contains(Filter.toLowerCase())){
-                list.add(a);
+        for (Alumno a : DATA) {
+            if(a.getId() == ID){
+                return a;
             }
         }
         
-        return list.toArray(new strAlumno[0]);
+        return null;
     }
     
-    public boolean Add(strAlumno str){
-        str.ID  = DATA.get(DATA.size() -1).ID + 1;
-        DATA.add(str);
-        return true;
-    }
-    
-    public boolean Update(strAlumno str){
-        for (int i = 0; i<DATA.size(); i++) {
-            if(DATA.get(i).ID == str.ID){
-                DATA.set(i, str);
-            }
-        }
-        return true;
-    }
-    
-    public boolean Delete(int ID){
-        for (int i = 0; i<DATA.size(); i++) {
-            if(DATA.get(i).ID == ID){
-                DATA.remove(i);
-            }
-        }
-        return true;
-    }
     
 }
